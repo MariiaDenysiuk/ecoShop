@@ -13,7 +13,7 @@
         <link href="{{ asset('build/css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <my-app>Loading...</my-app>
+        <app-root>Loading...</app-root>
 
         <script type="text/javascript" src="{{ asset('build/js/polyfills.js') }}?time={{ time() }}"></script>
         <script type="text/javascript" src="{{ asset('build/js/vendor.js') }}?time={{ time() }}"></script>
