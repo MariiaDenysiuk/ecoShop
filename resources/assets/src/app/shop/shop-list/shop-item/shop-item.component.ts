@@ -1,20 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Shop } from  '../../shop.model';
-import { ShopService} from './../../shop.service';
+
+// import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: 'shop-item',
     templateUrl: 'shop-item.component.html'
 })
 
-export class ShopItemComponent  implements OnInit{
+export class ShopItemComponent {
     @Input() shopProduct: Shop;
+    // constructor( private route: ActivatedRoute) {}
+    //    ngOnInit(){
+    //        this.route.params
+    //            .subscribe(
+    //                (params: Params) => {
+    //                    console.log('jjjjjjjjjjjjjjjj' + params['name'] + this.shopProduct.nameProd );
+    //                }
+    //            )
+    //    }
+   //  j() {
+   //      this.shopService.selectedItems.emit(this.shopProduct);
+   //  }
 
-    constructor(private shopService: ShopService) {}
-   ngOnInit(){}
-    j() {
-        this.shopService.selectedItems.emit(this.shopProduct);
 
-    }
 }
 

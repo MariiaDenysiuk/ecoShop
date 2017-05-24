@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Shop } from '../shop.model';
+import { Component, OnInit } from '@angular/core';
+
+
+
+import { ActivatedRoute} from '@angular/router';
+
 
 @Component({
     selector: 'shop-detail',
@@ -7,9 +11,11 @@ import { Shop } from '../shop.model';
 })
 
 export class ShopDetailComponent  implements OnInit{
-    @Input() shopProduct: Shop;
-
+    shopProduct: any;
+    
+    constructor( private route: ActivatedRoute) {}
     ngOnInit(){
-        console.log(this.shopProduct);
+
+        this.shopProduct = this.route.snapshot.queryParams;
     }
 }

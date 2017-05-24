@@ -23,9 +23,7 @@ export class ShopComponent implements OnInit{
                     this.selectedProduct = products;
                 }
             );
-        console.log(this.selectedProduct);
-
-    }
+    } 
 
 
 }
