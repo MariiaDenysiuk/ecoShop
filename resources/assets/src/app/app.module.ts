@@ -5,10 +5,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header.component';
-import { FooterComponent } from './footer.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
+import { AnswersComponent } from './answers/answers.component';
+import { ContactComponent } from './contact/contact.component';
+import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
+import { ShopListComponent } from './shop/shop-list/shop-list.component';
+import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -24,9 +29,14 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AppComponent,
     HomeComponent,
     ShopComponent,
+    ShopItemComponent,
+    ShopListComponent,
+    ShopDetailComponent,
     AboutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AnswersComponent,
+    ContactComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

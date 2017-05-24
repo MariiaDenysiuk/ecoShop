@@ -6,7 +6,7 @@
                 <div class="logoContent">
                     <div class="logo2">
                         <h1>
-                            <a [routerLink]="['']">эко сок</a>
+                            <a [routerLink]="['shop']">эко сок</a>
                         </h1>
                     </div>
                 </div>
@@ -16,8 +16,8 @@
                     <li><a [routerLink]="['']" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Главная</a></li>
                     <li><a [routerLink]="['shop']" routerLinkActive="selected">Магазин</a></li>
                     <li><a [routerLink]="['about']" routerLinkActive="selected">О нас</a></li>
-                    <li><a >Ответы</a></li>
-                    <li><a >Контакты </a></li>
+                    <li><a [routerLink]="['answers']" routerLinkActive="selected">Ответы</a></li>
+                    <li><a [routerLink]="['contact']" routerLinkActive="selected">Контакты </a></li>
                 </ul>
                 <div class="cart">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="8.3 0 105.5 126.1" preserveAspectRatio="xMinYMax meet" ng-switch-when="1">

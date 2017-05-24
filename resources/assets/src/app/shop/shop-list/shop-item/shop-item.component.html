@@ -1,0 +1,27 @@
+<div (click)="j()">
+    <div class="product-media"  >
+            <div class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <img class="media-item active crop" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
+                <img class="media-item crop" alt="Ваш товар" src="{{shopProduct.source2Prod}}">
+            </div>
+            <div class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <div class="overlay">
+                    <a class="action quickview" >БЫСТРЫЙ ПРОСМОТР</a>
+                </div>
+            </div>
+    </div>
+    <div class="product-details" href="#">
+        <div class="product-details-content-wrapper">
+            <div class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <h3 class="title product-title">
+                    <a>{{shopProduct.nameProd}}</a>
+                </h3>
+            </div>
+            <div class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <div data-hook="price-wrapper">
+                    <span class="price">{{shopProduct.priceProd}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
