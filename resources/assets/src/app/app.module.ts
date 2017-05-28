@@ -14,7 +14,9 @@ import { ContactComponent } from './contact/contact.component';
 import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
+import { BasketComponent } from './basket/basket.component';
 import { routing } from './app.routing';
+import { PageNotFound } from './page-not-found/page-not-found.component';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -36,7 +38,9 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     HeaderComponent,
     FooterComponent,
     AnswersComponent,
-    ContactComponent
+    ContactComponent,
+    BasketComponent,
+    PageNotFound
   ],
   providers: [],
   bootstrap: [AppComponent]

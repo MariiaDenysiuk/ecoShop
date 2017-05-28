@@ -16,6 +16,10 @@ export class ShopService {
         return this.shopProducts.slice();
     }
 
+    getShopProduct(id: number){
+        return this.shopProducts[id];
+    }
+
     addProductsToDetail(products){
         console.log(products);
     }

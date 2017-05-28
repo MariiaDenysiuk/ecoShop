@@ -14,8 +14,4 @@ export class  ShopListComponent implements OnInit {
     ngOnInit(){
         this.shopProducts = this.shopService.getShopProducts();
     }
-
-
-
-
 }
