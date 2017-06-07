@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +15,7 @@ import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.componen
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { BasketComponent } from './basket/basket.component';
+import { BasketPopupComponent } from './basket/basketPopup/basketPopup.component';
 import { routing } from './app.routing';
 import { PageNotFound } from './page-not-found/page-not-found.component';
 
@@ -25,7 +26,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AnswersComponent,
     ContactComponent,
     BasketComponent,
-    PageNotFound
+    PageNotFound,
+    BasketPopupComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ShopService } from  '../shop/shop.service';
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
     selector: 'my-basket',
     templateUrl: './basket.component.html',
-    styleUrls: ['./basket.component.scss']
+    styleUrls: ['./basket.component.scss'],
+    providers: [ShopService]
 })
-export class BasketComponent implements OnInit {
+export class BasketComponent implements OnInit, OnDestroy {
+    sub: Subscription;
+    id: number;
 
-    constructor() {
+    constructor(private  shopService: ShopService) {
         // Do stuff
     }
 
     ngOnInit() {
-        console.log('Hello ');
+           this.sub =  this.shopService.startedEditing
+                .subscribe(
+                    (index: number)=> {
+                        this.id = index;
+                        console.log(this.id);
+
+                    }
+                );
+        console.log(this.id);
+
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
 }

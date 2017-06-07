@@ -1,11 +1,11 @@
-<main>
+<main >
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <a href="">Главная / </a><a href="">Магазин / </a><a href="">{{shopProduct.nameProd}}</a>
+                <a [routerLink]="['']">Главная / </a><a [routerLink]="['../']">Магазин / </a><a >{{shopProduct.nameProd}}</a>
             </div>
             <div class="col-sm-5">
-                <a>< Назад </a>| <a (click)="forward()">Вперед ></a>
+                <a [routerLink]="[addP]" (click)='backward()'>< Назад </a>| <a [routerLink]="[add]" (click)='forward()'>Вперед ></a>
             </div>
             <div class="col-sm-6">
                 <div class="product-gallery">
@@ -25,17 +25,23 @@
                 <div class="label">Артикул: 0001</div>
                 <div class="product-prices"></div>
             </header>
-            <form class="product-form">
-                <label>Количество</label>
-                <select name="quantity" id="">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <form class="product-form" (ngSubmit)="onSubmit()" #f="ngForm">
+                <div ngModelGroup="userData">
+                    <label>Количество</label>
+                    <select
+                            name="quantity"
+                            id=""
+                            ngModel
+                            name="quantity">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
 
-                <button type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                    <button [disabled]="!f.valid" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                </div>
             </form>
             <ul class="info-sections">
                 <li class="info-section active">
@@ -51,3 +57,4 @@
         </div>
     </div>
 </main>
+<my-basket-popup *ngIf="submitted" [prod]="shopProduct"></my-basket-popup>

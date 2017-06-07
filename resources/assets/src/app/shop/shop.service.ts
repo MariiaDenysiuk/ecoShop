@@ -1,8 +1,10 @@
 import { EventEmitter } from '@angular/core';
 import { Shop } from './shop.model';
+import { Subject } from 'rxjs/Subject'; 
 
 export class ShopService {
     selectedItems = new EventEmitter<Shop>();
+    startedEditing = new Subject<number>();
     private shopProducts: Shop[] = [
         new Shop('Your product1', '$19.99', 'img/pr-2-1.jpg', 'img/pr-2-3.jpg'),
         new Shop('Your product2', '$19.99', 'img/pr-3-1.jpg', 'img/pr-3-3.jpg'),
@@ -19,8 +21,5 @@ export class ShopService {
     getShopProduct(id: number){
         return this.shopProducts[id];
     }
-
-    addProductsToDetail(products){
-        console.log(products);
-    }
+ 
 }

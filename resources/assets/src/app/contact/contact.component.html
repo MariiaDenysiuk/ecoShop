@@ -1,1 +1,53 @@
-hi contact
+<main>
+    <div class="container">
+        <h2>Контакты</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <p>ул. Лаврская, 15, Киев,<br>
+                    01015, Украина</p>
+                <p>info@my.site</p>
+                <p>Тел.: +38 (044) 000 00 00<br>
+                    Факс: +38 (044) 000 00 00</p>
+            </div><!--
+                --><div class="col-sm-6">
+            <form  (ngSubmit)="onSubmit()" #f="ngForm">
+                <div class="row"
+                     ngModelGroup="userData"
+                     #userData="ngModelGroup">
+                    <div class="col-sm-6">
+                        <input class = "form-control" type="text"
+                               ngModel
+                               name="name"
+                               placeholder="Name*"
+                               #name="ngModel"
+                               required>
+                        <input class = "form-control" type="email"
+                               ngModel
+                               name="email"
+                               placeholder="Email*"
+                               #email="ngModel"
+                               required>
+                        <input class = "form-control" type="phone"
+                               ngModel
+                               name="phone"
+                               placeholder="Phone*"
+                               #phone="ngModel"
+                               required>
+                    </div>
+                    <div *ngIf="!email.valid && email.touched">Please enter a valid value</div>
+                    <div class="col-sm-6">
+                        <textarea ngModel name="message" placeholder="Message*" #message="ngModel" required></textarea>
+                    </div>
+                </div>
+                <p *ngIf="!userData.valid && userData.touched">Not valid</p>
+                <button [disabled]="!f.valid"  type="submit">Submit</button>
+            </form>
+            <div *ngIf="submitted">
+                <p>Username: {{user.name}}</p>
+            </div>
+        </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10444.10709335053!2d30.538431228378318!3d50.432331927054825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cfa04a0c8e5b%3A0x3b40a2bcbca08807!2sKiev+Pechersk+Lavra!5e0!3m2!1sen!2s!4v1489657931719" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+    </div>
+</main>

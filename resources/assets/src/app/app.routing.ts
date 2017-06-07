@@ -9,7 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { BasketComponent } from './basket/basket.component';
 import {PageNotFound} from "./page-not-found/page-not-found.component";
 
-
+ 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },

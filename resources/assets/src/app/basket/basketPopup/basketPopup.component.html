@@ -1,0 +1,36 @@
+<div class="overlay"></div>
+<div class="minicart active">
+    <header>
+        <i title="Закрыть корзину" class="icon-right"></i>Корзина
+    </header>
+    <section class="under-header" hidden>
+        <span >Корзина пуста</span>
+    </section>
+    <section class="cart-content">
+        <ul>
+            <li>
+                <a href="product-1.html">
+                    <img class="product-media" alt="Ваш товар" src="{{prod.source1Prod}}">
+                </a>
+                <div class="item-info">
+                    <div class="item-name">Ваш товар</div>
+                    <div class="item-quantity">
+                        КОЛИЧЕСТВО:
+                        <span>1</span>
+                    </div>
+                    <div class="item-price">
+                        {{prod.priceProd}}
+                    </div>
+                    <a class="icon-remove" title="Удалить из корзины"></a>
+                </div>
+            </li>
+        </ul>
+        <div class="above-footer">
+            Сумма
+            <div>$5.99</div>
+        </div>
+    </section>
+    <footer>
+        <a role="button" [routerLink]="['../../basket']" (click)="onclick()">ПЕРЕЙТИ В КОРЗИНУ</a>
+    </footer>
+</div>
