@@ -15,9 +15,6 @@ export class ContactComponent implements OnInit {
         message: ''
     }
     submitted = false;
-    constructor() {
-        // Do stuff
-    }
 
     ngOnInit() {
         console.log('Hello Home');

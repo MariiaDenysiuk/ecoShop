@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -11,24 +12,20 @@ import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
 import { AnswersComponent } from './answers/answers.component';
 import { ContactComponent } from './contact/contact.component';
+import { CartComponent } from './shop/cart/cart.component';
+import { CartPopupComponent } from './shop/cart/cartPopup/cartPopup.component';
 import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
-import { BasketComponent } from './basket/basket.component';
-import { BasketPopupComponent } from './basket/basketPopup/basketPopup.component';
-import { routing } from './app.routing';
 import { PageNotFound } from './page-not-found/page-not-found.component';
+import  { ShopService } from './shop/shop.service';
+import { CartService } from './shop/cart/cart.service';
+import { SignInComponent } from './signIn/signIn.component'
+
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    routing,
-    ReactiveFormsModule
-  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -41,11 +38,19 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     FooterComponent,
     AnswersComponent,
     ContactComponent,
-    BasketComponent,
+    CartComponent,
+    CartPopupComponent,
     PageNotFound,
-    BasketPopupComponent
+    SignInComponent
   ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule
+  ],
+  providers: [ShopService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

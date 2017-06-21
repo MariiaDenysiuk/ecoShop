@@ -4,7 +4,7 @@
             <div class="col-sm-6">
                 <h1 class="h2 title  header">
                     <span  class="user-free-text">Моя корзина</span>
-                    <span class="items-count">(9)</span>
+                    <span class="items-count">({{allItem}})</span>
                 </h1>
             </div>
             <div class="col-sm-5">
@@ -17,17 +17,19 @@
             <div class="col-sm-2">КОЛИЧЕСТВО</div>
             <div class="col-sm-2">ИТОГО</div>
         </div>
-        <div class="row">
+        <div  *ngFor="let shopProduct of shopProducts; let i = index" class="row">
             <div class="col-sm-3">
-                <a><img src="img/pr-2-3.jpg"></a>
+                <a><img src="{{shopProduct.source1Prod}}"></a>
             </div>
             <div class="col-sm-4">
-                <p>Ваш товар</p>
+                <p>{{shopProduct.nameProd}}</p>
                 <p>Артикул: 0006</p>
-                <p>Цена: $19.99</p>
+                <p>{{shopProduct.priseProd}}</p>
             </div>
-            <div class="col-sm-2">3</div>
-            <div class="col-sm-2">$59.97</div>
+            <div class="col-sm-2"><a (click)="add(shopProduct.id)">+</a>{{shopProduct.sumProd}} <a (click)="reduce(shopProduct.id)">-</a></div>
+            <div class="col-sm-2">{{shopProduct.sumPrise}}</div>
+            <a (click)="deleteItem(shopProduct.id, i)">Delete this product</a>
         </div>
+        <div>Сумма: ${{sum}}</div>
     </div>
 </main>

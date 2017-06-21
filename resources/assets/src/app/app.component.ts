@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import '../style/app.scss';
 
@@ -8,5 +8,10 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss'],
   // encapsulation: viewEncapsulation.Emulated
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
+  ngOnInit() {
+
+  }
+
 }

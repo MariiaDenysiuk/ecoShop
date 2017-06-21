@@ -5,7 +5,7 @@
                 <a [routerLink]="['']">Главная / </a><a [routerLink]="['../']">Магазин / </a><a >{{shopProduct.nameProd}}</a>
             </div>
             <div class="col-sm-5">
-                <a [routerLink]="[addP]" (click)='backward()'>< Назад </a>| <a [routerLink]="[add]" (click)='forward()'>Вперед ></a>
+                <a>< Назад </a>| <a >Вперед ></a>
             </div>
             <div class="col-sm-6">
                 <div class="product-gallery">
@@ -57,4 +57,4 @@
         </div>
     </div>
 </main>
-<my-basket-popup *ngIf="submitted" [prod]="shopProduct"></my-basket-popup>
+<my-cart-popup *ngIf="submitted" [prod]="shopProduct"></my-cart-popup>

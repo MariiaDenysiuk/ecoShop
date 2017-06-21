@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
@@ -6,8 +7,9 @@ import { ShopComponent } from './shop/shop.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { AnswersComponent } from './answers/answers.component';
 import { ContactComponent } from './contact/contact.component';
-import { BasketComponent } from './basket/basket.component';
+import { CartComponent } from './shop/cart/cart.component';
 import {PageNotFound} from "./page-not-found/page-not-found.component";
+import { SignInComponent } from './signIn/signIn.component'
 
  
 const routes: Routes = [
@@ -17,10 +19,21 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'answers', component: AnswersComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'basket', component: BasketComponent},
+  { path: 'cart', component: CartComponent},
+  { path: 'signin', component: SignInComponent},
   { path: 'not-found', component: PageNotFound},
   { path: '**', redirectTo: '/not-found'}
 ];
 
-export const routing = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class AppRoutingModule {
+
+}
 

@@ -4,22 +4,22 @@
         <i title="Закрыть корзину" class="icon-right"></i>Корзина
     </header>
     <section class="under-header" hidden>
-        <span >Корзина пуста</span>
+        <span >Корзина пуста </span>
     </section>
-    <section class="cart-content">
+    <section  *ngFor="let shopProduct of shopProducts; let i = index" class="cart-content">
         <ul>
             <li>
                 <a href="product-1.html">
-                    <img class="product-media" alt="Ваш товар" src="{{prod.source1Prod}}">
+                    <img class="product-media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
                 </a>
                 <div class="item-info">
                     <div class="item-name">Ваш товар</div>
                     <div class="item-quantity">
                         КОЛИЧЕСТВО:
-                        <span>1</span>
+                        <span>{{shopProduct.sumProd}}</span>
                     </div>
                     <div class="item-price">
-                        {{prod.priceProd}}
+                        {{shopProduct.priceProd}}
                     </div>
                     <a class="icon-remove" title="Удалить из корзины"></a>
                 </div>
@@ -27,10 +27,10 @@
         </ul>
         <div class="above-footer">
             Сумма
-            <div>$5.99</div>
+            <div>${{sum}}</div>
         </div>
     </section>
     <footer>
-        <a role="button" [routerLink]="['../../basket']" (click)="onclick()">ПЕРЕЙТИ В КОРЗИНУ</a>
+        <a role="button" [routerLink]="['../../cart']" >ПЕРЕЙТИ В КОРЗИНУ</a>
     </footer>
 </div>

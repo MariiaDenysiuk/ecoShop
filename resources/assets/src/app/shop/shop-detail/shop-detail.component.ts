@@ -1,15 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params} from '@angular/router';
 import { ShopService } from '../shop.service';
+import { CartService } from '../cart/cart.service';
 import  { Shop } from '../shop.model';
 import { NgForm } from '@angular/forms';
-
 
 
 @Component({
     selector: 'shop-detail',
     templateUrl: 'shop-detail.component.html',
-    providers: [ShopService]
 })
 
 export class ShopDetailComponent  implements OnInit{
@@ -20,11 +19,10 @@ export class ShopDetailComponent  implements OnInit{
     };
     submitted = false;
     id: number;
-    num: number;
-    add;
-    numP: number;
-    addP;
-    constructor( private route: ActivatedRoute, private  shopService: ShopService) {}
+
+    constructor( private route: ActivatedRoute,
+                 private  shopService: ShopService,
+                 private cartService: CartService) {}
     ngOnInit(){
         this.route.params
             .subscribe(
@@ -33,32 +31,13 @@ export class ShopDetailComponent  implements OnInit{
                     this.shopProduct = this.shopService.getShopProduct(this.id);
                 }
             );
-        this.num = this.id+1;
-        this.add = '../' + (this.num);
-        this.numP = this.id-1;
-        this.addP = '../' + (this.numP);
-
     }
 
     onSubmit(){
         this.user.quantity = this.shopForm.value.userData.quantity;
         this.submitted = true;
-        console.log(this.shopForm);
+        this.cartService.cartHeader.next(Number(this.user.quantity));
+        this.cartService.addShopProduct(this.id, this.user.quantity);
     }
-
-    forward() {
-        this.num++;
-        this.add = '../' + this.num;
-        if(this.num > this.shopService.getShopProducts().length - 1){
-            this.add='../';
-        }
-
-    }
-    backward(){
-        this.numP = this.numP - 1;
-        this.addP = '../' + this.numP;
-        if(this.numP <= 0){
-            this.addP='../';
-        }
-    }
+    
 }

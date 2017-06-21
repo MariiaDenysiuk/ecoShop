@@ -1,0 +1,76 @@
+<form  [formGroup]="myform" novalidate (ngSubmit)="onSubmit()">
+    <fieldset formGroupName="name" >
+        <div class="form-group"
+             [ngClass]="{
+                'has-danger': firstName.invalid && firstName.dirty,
+                'has-success': firstName.valid && firstName.dirty
+                 }">
+            <label>First Name</label>
+            <input type="text"
+                   class="form-control"
+                     formControlName="firstName"
+                    required>
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{
+                'has-danger': lastName.invalid && firstName.dirty,
+                'has-success': lastName.valid && firstName.dirty
+                 }">
+            <label>Last Name</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="lastName"
+                   required>
+        </div>
+    </fieldset>
+
+    <div class="form-group" [ngClass]="{
+  'has-danger': myform.controls.email.invalid && myform.controls.email.dirty,
+  'has-success': myform.controls.email.valid && myform.controls.email.dirty
+}">
+        <label>Email</label>
+        <input type="email"
+               class="form-control"
+               formControlName="email"
+               required>
+    </div>
+
+    <div class="form-group" [ngClass]="{
+                'has-danger': firstName.invalid && firstName.dirty,
+                'has-success': firstName.valid && firstName.dirty
+                 }">
+        <label>Password</label>
+        <input type="password"
+               class="form-control"
+               formControlName="password"
+               required>
+    </div>
+
+    <div class="form-control-feedback"
+         *ngIf="password.errors && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required">Password is required</p>
+        <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+    </div>
+
+    <div class="form-group">
+        <label>Language</label>
+        <select class="form-control"
+                formControlName="language" >
+            <option *ngFor="let lang of langs"
+                    [value]="lang">
+                {{lang}}
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!--<pre>{{myform.value | json}}</pre>-->
+
+<!--<pre>Dirty? {{ myform.controls.email.dirty }}</pre>-->
+
+<!--<pre>Pristine? {{ myform.controls.email.pristine }}</pre>-->
+
+<!--<pre>Touched? {{ myform.controls.email.touched }}</pre>-->
+
+<!--<pre>Valid? {{ myform.controls.email.valid }}</pre>-->
