@@ -1,6 +1,6 @@
-import { ShopService } from "../shop.service";
+import { ShopService } from '../shop.service';
 import { Subject } from 'rxjs/Subject';
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CartService {
@@ -10,18 +10,15 @@ export class CartService {
     cartHeader = new Subject<number>();
     cartHeaderOne = new Subject<number>();
     cartHeaderSubst = new Subject<number>();
-    
-    constructor(private shopService: ShopService){
-    };
+    constructor(private shopService: ShopService) {};
 
-    addShopProduct(id: number, q){
+    addShopProduct(id: number, q) {
         this.addedProd.push(this.shopService.getShopProduct(id));
         this.shopService.shopProducts[id].numbe.push(q);
-        if(this.shopService.shopProducts[id].numbe.length>1 ){
+        if (this.shopService.shopProducts[id].numbe.length > 1) {
             this.addedProd.pop();
         }
-        console.log("one " + this.shopService.shopProducts[id].numbe);
-        this.shopService.shopProducts[id].sumProd = this.shopService.shopProducts[id].numbe.reduce(function(sum, current){
+        this.shopService.shopProducts[id].sumProd = this.shopService.shopProducts[id].numbe.reduce(function(sum, current) {
             return Number(sum) + Number(current);
         });
         this.shopService.shopProducts[id].sumPrise = this.shopService.shopProducts[id].sumProd * this.shopService.shopProducts[id].price;

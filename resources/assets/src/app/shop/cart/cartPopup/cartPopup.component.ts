@@ -1,6 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Shop } from  '../../../shop/shop.model';
-import { ActivatedRoute, Params} from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CartService } from '../cart.service';
 
 export class CartPopupComponent implements OnInit {
     @Input() prod: Shop;
-    id:number;
+    id: number;
     shopProducts;
     allItem;
     sum;

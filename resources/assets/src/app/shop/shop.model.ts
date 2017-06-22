@@ -1,9 +1,9 @@
 export class Shop {
     id: number;
-    nameProd:string;
-    priceProd:number;
-    source1Prod:string;
-    source2Prod:string;
+    nameProd: string;
+    priceProd: number;
+    source1Prod: string;
+    source2Prod: string;
     numb;
     sumProd;
     sumPrise;

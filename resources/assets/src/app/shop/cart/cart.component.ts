@@ -1,4 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { CartService } from '../cart/cart.service';
 
 @Component({
@@ -19,21 +19,21 @@ export class CartComponent implements OnInit, DoCheck {
         this.shopProducts = this.cartService.addedProd;
     }
 
-    add(id){
+    add(id) {
         this.cartService.addShopProduct(id, 1);
-        this.allItem +=1;
-        this.sum +=19.99;
+        this.allItem += 1;
+        this.sum += 19.99;
         this.cartService.cartHeaderOne.next(1);
     }
 
-    reduce(id){
+    reduce(id) {
         this.cartService.addShopProduct(id, -1);
-        this.allItem -=1;
-        this.sum -=19.99;
+        this.allItem -= 1;
+        this.sum -= 19.99;
         this.cartService.cartHeaderSubst.next(-1);
     }
 
-    deleteItem(id, i){
+    deleteItem(id, i) {
         this.cartService.deleteShopProduct(id);
         this.shopProducts.splice(i, 1);
     }

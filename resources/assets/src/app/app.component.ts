@@ -8,10 +8,6 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss'],
   // encapsulation: viewEncapsulation.Emulated
 })
-export class AppComponent implements OnInit{
-  
-  ngOnInit() {
-
-  }
-
+export class AppComponent implements OnInit {
+  ngOnInit() {}
 }

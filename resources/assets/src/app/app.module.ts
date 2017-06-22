@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
@@ -17,10 +17,10 @@ import { CartPopupComponent } from './shop/cart/cartPopup/cartPopup.component';
 import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
-import { PageNotFound } from './page-not-found/page-not-found.component';
-import  { ShopService } from './shop/shop.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ShopService } from './shop/shop.service';
 import { CartService } from './shop/cart/cart.service';
-import { SignInComponent } from './signIn/signIn.component'
+import { SignInComponent } from './signIn/signIn.component';
 
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -40,7 +40,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     ContactComponent,
     CartComponent,
     CartPopupComponent,
-    PageNotFound,
+    PageNotFoundComponent,
     SignInComponent
   ],
   imports: [

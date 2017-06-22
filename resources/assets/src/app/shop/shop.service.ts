@@ -9,10 +9,10 @@ export class ShopService {
         new Shop(4, 'Your product', 19.99, 'img/pr-3-1.jpg', 'img/pr-3-3.jpg', [], 0, 0),
         new Shop(5, 'Your product', 19.99, 'img/pr-4-3.jpg', 'img/pr-4-3.jpg', [], 0, 0)
     ];
-    getShopProducts(){
+    getShopProducts() {
         return this.shopProducts.slice();
     }
-    getShopProduct(id: number){
+    getShopProduct(id: number) {
         return this.shopProducts[id];
     }
 }

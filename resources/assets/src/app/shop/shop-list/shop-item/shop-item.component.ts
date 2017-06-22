@@ -4,12 +4,11 @@ import { Shop } from  '../../shop.model';
 // import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-    selector: 'shop-item',
+    selector: 'my-shop-item',
     templateUrl: 'shop-item.component.html'
 })
 
 export class ShopItemComponent {
     @Input() shopProduct: Shop;
-    
 }
 

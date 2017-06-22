@@ -8,10 +8,9 @@ import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { AnswersComponent } from './answers/answers.component';
 import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './shop/cart/cart.component';
-import {PageNotFound} from "./page-not-found/page-not-found.component";
-import { SignInComponent } from './signIn/signIn.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignInComponent } from './signIn/signIn.component';
 
- 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
@@ -21,7 +20,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'cart', component: CartComponent},
   { path: 'signin', component: SignInComponent},
-  { path: 'not-found', component: PageNotFound},
+  { path: 'not-found', component: PageNotFoundComponent},
   { path: '**', redirectTo: '/not-found'}
 ];
 

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'signin',
+    selector: 'my-signin',
     templateUrl: 'signIn.component.html',
     styleUrls: ['./signin.component.scss']
 })
@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
     email: FormControl;
     password: FormControl;
     language: FormControl;
-    ngOnInit(){
+    ngOnInit() {
         this.createFormControls();
         this.createForm();
     }
@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
         this.lastName = new FormControl('', Validators.required);
         this.email = new FormControl('', [
             Validators.required,
-            Validators.pattern("[^ @]*@[^ @]*")
+            Validators.pattern('[^ @]*@[^ @]*')
         ]);
         this.password = new FormControl('', [
             Validators.required,
@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
 
     onSubmit() {
         if (this.myform.valid) {
-            console.log("Form Submitted!");
+            console.log('Form Submitted!');
             this.myform.reset();
         }
     }

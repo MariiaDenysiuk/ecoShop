@@ -1,12 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShopService } from './shop.service';
 
 @Component({
-    selector: 'app-shop',
+    selector: 'my-app-shop',
     templateUrl: 'shop.component.html',
     providers: [ShopService]
 })
-export class ShopComponent implements OnInit{
-    ngOnInit() {
-    }
+export class ShopComponent implements OnInit {
+    ngOnInit() {}
 }

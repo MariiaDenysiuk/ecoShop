@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Shop} from '../shop.model';
-import {ShopService} from './../shop.service';
+import { Component, OnInit } from '@angular/core';
+import { Shop } from '../shop.model';
+import { ShopService } from './../shop.service';
 
 @Component({
-    selector: 'shop-list',
+    selector: 'my-shop-list',
     templateUrl: 'shop-list.component.html',
 })
 export class  ShopListComponent implements OnInit {
@@ -11,7 +11,7 @@ export class  ShopListComponent implements OnInit {
 
     constructor(private shopService: ShopService) {}
 
-    ngOnInit(){
+    ngOnInit() {
         this.shopProducts = this.shopService.getShopProducts();
     }
 }
