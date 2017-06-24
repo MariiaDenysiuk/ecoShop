@@ -1,25 +1,27 @@
 <main >
     <div class="container">
-        <div class="row">
+        <div class="row breadcrumbs">
             <div class="col-sm-6">
                 <a [routerLink]="['']">Главная / </a><a [routerLink]="['../']">Магазин / </a><a >{{shopProduct.nameProd}}</a>
             </div>
-            <div class="col-sm-5">
-                <a>< Назад </a>| <a >Вперед ></a>
+            <div class="col-sm-6 move">
+                <a class="back" (click)="back()">< Назад </a> | <a class="next" (click)="next()" >Вперед ></a>
             </div>
-            <div class="col-sm-6">
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
                 <div class="product-gallery">
-                    <div class="product-media-container">
-                        <img class="media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
+                    <div class="product-media-container"  >
+                        <img class="media" alt="Ваш товар" src="{{shopProduct.source1Prod}}" #img0>
                     </div>
                     <div class="thumbnails">
-                        <img class="thumbnails-media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
-                        <img class="thumbnails-media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
+                        <img class="thumbnails-media" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.source1Prod}}" #img1>
+                        <img class="thumbnails-media" alt="Ваш товар" (click)="toggleImg(img2, img0)" src="{{shopProduct.source2Prod}}" #img2>
                     </div>
                     <p>Это описание товара. Здесь вы можете рассказать о нем подробнее. Пусть покупатели узнают, какую выгоду они получат от покупки.</p>
                 </div>
             </div><!--
-            --><div class="col-sm-6">
+            --><div class="col-sm-5">
             <header>
                 <h2></h2>
                 <div class="label">Артикул: 0001</div>
@@ -45,12 +47,26 @@
             </form>
             <ul class="info-sections">
                 <li class="info-section active">
-                    <h3>О ТОВАРЕ</h3>
-                    <p>Это информация о товаре. Расскажите подробно, что он из себя представляет, и перечислите всю необходимую информацию: размеры, материалы, инструкции по уходу и т. д. Это также хорошая возможность сообщить, в чем особенность вашей продукции и какую выгоду покупатели получат в итоге. Подробные сведения о товаре помогут вашим посетителям определиться с покупкой.</p>
+                    <h3 (click)="toggle(productInfo, addSignInfo)">О ТОВАРЕ <span #addSignInfo>+</span></h3>
+                    <p  style="display: none" #productInfo>Это информация о товаре. Расскажите подробно, что он из себя представляет, и перечислите всю необходимую информацию: размеры, материалы, инструкции по уходу и т. д. Это также хорошая возможность сообщить, в чем особенность вашей продукции и какую выгоду покупатели получат в итоге. Подробные сведения о товаре помогут вашим посетителям определиться с покупкой.</p>
                 </li>
                 <li class="info-section active">
-                    <h3>ПОЛИТИКА ВОЗВРАТА</h3>
-                    <p>Это правила и условия возврата товара или денег. Расскажите посетителям, что нужно сделать, если они захотят вернуть товар или получить назад свои деньги. Четкая и ясная политика возврата — это хороший способ построить доверительные отношения с клиентами.</p>
+                    <h3 (click)="toggle(returnPolicy, addSignPolicy)">ПОЛИТИКА ВОЗВРАТА  <span #addSignPolicy>+</span></h3>
+                    <p style="display: none" #returnPolicy>Это правила и условия возврата товара или денег. Расскажите посетителям, что нужно сделать, если они захотят вернуть товар или получить назад свои деньги. Четкая и ясная политика возврата — это хороший способ построить доверительные отношения с клиентами.</p>
+                </li>
+            </ul>
+            <ul class="social-networks">
+                <li class="icon">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </li>
+                <li class="icon">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </li>
+                <li class="icon">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </li>
+                <li class="icon">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                 </li>
             </ul>
         </div>

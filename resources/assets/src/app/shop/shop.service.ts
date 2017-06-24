@@ -15,4 +15,5 @@ export class ShopService {
     getShopProduct(id: number) {
         return this.shopProducts[id];
     }
+    shopProductsLen = this.shopProducts.length-1;
 }
