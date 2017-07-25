@@ -1,0 +1,38 @@
+<main>
+    <div class="container quickViewContainer">
+        <div class="row">
+            <div class="col-sm-7">
+                <a (click)="exit()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <div class="product-gallery">
+                    <div class="product-media-container" >
+                        <img class="media" alt="Ваш товар" src="{{shopProduct.source1Prod}}" #img0>
+                    </div>
+                    <div class="thumbnails">
+                        <img class="thumbnails-media thumbnails-media-left" [ngClass]="{'active':bool}" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.source1Prod}}" #img1>
+                        <img class="thumbnails-media" alt="Ваш товар" [ngClass]="{'active':!bool}" (click)="toggleImg(img2, img0)" src="{{shopProduct.source2Prod}}" #img2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <header class="header-info">
+                    <h2>{{shopProduct.nameProd}}</h2>
+                    <div class="label">Артикул: 0001</div>
+                    <div class="product-prices">${{shopProduct.price}}<a [routerLink]="[shopProduct.id]">More detail</a></div>
+                </header>
+                <form class="product-form" (ngSubmit)="onSubmit()" #productForm="ngForm">
+                    <div ngModelGroup="userData">
+                        <label>Количество</label>
+                        <select name="quantity"  [ngModel]="1" >
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button type="submit" >ДОБАВИТЬ В КОРЗИНУ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,4 +1,5 @@
 <my-header></my-header>
 <router-outlet></router-outlet>
 <my-footer></my-footer>
+<my-cart-popup [@showState]="submitted ? 'shown':'hidden'" *ngIf="submitted" ></my-cart-popup>
 

@@ -1,19 +1,16 @@
-.breadcrumbs {
-  margin-top: 35px;
-  margin-bottom: 60px;
-}
-
-.breadcrumbs a {
-  color: #888785;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.move {
-  text-align: right;
-  color: #888785;
-}
-
 .thumbnails img {
   height: 100px;
+}
+
+.my-cart-popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.thumbnails .active {
+  border: 2px solid #D1CDC9;
 }

@@ -1,35 +1,35 @@
-<main>
+<main class="cart-component">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-9">
                 <h1 class="h2 title  header">
                     <span  class="user-free-text">Моя корзина</span>
                     <span class="items-count">({{allItem}})</span>
                 </h1>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <button >ОФОРМИТЬ&nbsp;ЗАКАЗ</button>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3">ТОВАР</div>
              <div class="col-sm-4">НАИМЕНОВАНИЕ</div>
-            <div class="col-sm-2">КОЛИЧЕСТВО</div>
-            <div class="col-sm-2">ИТОГО</div>
+            <div class="col-sm-3 quant">КОЛИЧЕСТВО</div>
+            <div class="col-sm-2 sum">ИТОГО</div>
         </div>
-        <div  *ngFor="let shopProduct of shopProducts; let i = index" class="row">
+        <div  *ngFor="let shopProduct of shopProducts; let i = index" class="row shop-products">
             <div class="col-sm-3">
                 <a><img src="{{shopProduct.source1Prod}}"></a>
             </div>
-            <div class="col-sm-4">
-                <p>{{shopProduct.nameProd}}</p>
+            <div class="col-sm-4 product-info">
+                <h3>{{shopProduct.nameProd}}</h3>
                 <p>Артикул: 0006</p>
                 <p>{{shopProduct.priseProd}}</p>
+                <p class="delete"><a (click)="deleteItem(shopProduct.id, i)">Delete this product</a></p>
             </div>
-            <div class="col-sm-2"><a (click)="add(shopProduct.id)">+</a>{{shopProduct.sumProd}} <a (click)="reduce(shopProduct.id)">-</a></div>
-            <div class="col-sm-2">{{shopProduct.sumPrise}}</div>
-            <a (click)="deleteItem(shopProduct.id, i)">Delete this product</a>
+            <div class="col-sm-3 a-m-products"><a class="add-product" (click)="add(shopProduct.id)">+</a><span class="input-sum">{{shopProduct.sumProd}}</span> <a class="add-product" (click)="reduce(shopProduct.id)">-</a></div>
+            <div class="col-sm-2 sum sum-number">{{shopProduct.sumPrise}}</div>
         </div>
-        <div>Сумма: ${{sum}}</div>
+        <div class="amount">Сумма: ${{sum}}</div>
     </div>
 </main>

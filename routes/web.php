@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix'=>'adminzone'], function()
+{
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
+    Route::resource('products', 'ProductsController');
+    Route::resource('pages', 'PagesController');
+});

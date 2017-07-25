@@ -1,3 +1,35 @@
+.show-form {
+  width: 30%;
+  position: absolute;
+  right: 0;
+  top: 120px;
+  padding: 30px;
+  background-color: #F0E11A;
+  z-index: 100;
+}
+
+.show-form label {
+  color: white;
+}
+.show-form input {
+  border: 0 solid #888785;
+}
+.show-form button {
+  background-color: #ff9f24;
+  opacity: 0.8;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.show-form button:hover {
+  background: #888785;
+}
+.show-form a:hover{
+  color: #888785;
+}
 a {
   font-family: 'Jura', sans-serif;
+}
+
+.selected {
+  color: #A2CC01;
 }

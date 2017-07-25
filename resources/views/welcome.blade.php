@@ -8,8 +8,7 @@
         <title>Laravel + Angular 4</title>
         <base href="{{ url('') }}">
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="https://fonts.googleapis.com/css?family=Jura|Open+Sans+Condensed:300" rel="stylesheet">
         <link href="{{ asset('build/css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>

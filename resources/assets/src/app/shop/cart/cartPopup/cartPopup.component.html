@@ -1,13 +1,13 @@
-<div class="overlay"></div>
-<div class="minicart active">
+<div class="opacity" (click)="hidePopup()"></div>
+<div class="minicart active"  >
     <header>
-        <i title="Закрыть корзину" class="icon-right"></i>Корзина
+        <i class="fa fa-angle-right" (click)="hidePopup()" aria-hidden="true"></i>Корзина
     </header>
     <section class="under-header" hidden>
         <span >Корзина пуста </span>
     </section>
-    <section  *ngFor="let shopProduct of shopProducts; let i = index" class="cart-content">
-        <ul>
+    <section  class="cart-content">
+        <ul *ngFor="let shopProduct of shopProducts; let i = index" >
             <li>
                 <a href="product-1.html">
                     <img class="product-media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
@@ -21,16 +21,16 @@
                     <div class="item-price">
                         {{shopProduct.priceProd}}
                     </div>
-                    <a class="icon-remove" title="Удалить из корзины"></a>
+                    <i class="fa fa-times-circle-o" (click)="deleteItem(shopProduct.id, i)" aria-hidden="true"></i>
                 </div>
             </li>
         </ul>
-        <div class="above-footer">
-            Сумма
-            <div>${{sum}}</div>
-        </div>
     </section>
+    <div class="above-footer">
+        Сумма
+        <div>${{sum}}</div>
+    </div>
     <footer>
-        <a role="button" [routerLink]="['../../cart']" >ПЕРЕЙТИ В КОРЗИНУ</a>
+        <a role="button" [routerLink]="['../cart']" (click)="hidePopup()">ПЕРЕЙТИ В КОРЗИНУ</a>
     </footer>
 </div>

@@ -5,13 +5,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CartService {
     addedProd = [];
-    allItems = 0;
-    priceAmount = 0;
+    allItems:number = 0;
+    priceAmount:number = 0;
     cartHeader = new Subject<number>();
-    cartHeaderOne = new Subject<number>();
-    cartHeaderSubst = new Subject<number>();
-    constructor(private shopService: ShopService) {};
+    cartHeaderPlus = new Subject<number>();
+    cartHeaderMinus = new Subject<number>();
+    cartHeaderDelete = new Subject<number>();
+    hideEl = new Subject<boolean>();
+    hidePopup = new Subject<boolean>();
+    showCartPopup = new Subject<boolean>();
 
+    constructor(private shopService: ShopService) {};
     addShopProduct(id: number, q) {
         this.addedProd.push(this.shopService.getShopProduct(id));
         this.shopService.shopProducts[id].numbe.push(q);
@@ -21,9 +25,10 @@ export class CartService {
         this.shopService.shopProducts[id].sumProd = this.shopService.shopProducts[id].numbe.reduce(function(sum, current) {
             return Number(sum) + Number(current);
         });
-        this.shopService.shopProducts[id].sumPrise = this.shopService.shopProducts[id].sumProd * this.shopService.shopProducts[id].price;
-        this.allItems += Number(q);
-        this.priceAmount += Number(this.shopService.shopProducts[id].price * q);
+        this.shopService.shopProducts[id].sumPrise = Math.round((this.shopService.shopProducts[id].sumProd * this.shopService.shopProducts[id].price)*100)/100;
+        this.allItems += +(q);
+        this.priceAmount += +Math.round((this.shopService.shopProducts[id].price * q)*100)/100;
+        localStorage.setItem("lastname", "misha");
     };
 
     addItem(id: number, item: number) {
@@ -35,4 +40,5 @@ export class CartService {
         this.allItems = this.allItems - this.shopService.shopProducts[id].sumProd;
         this.priceAmount = this.priceAmount - this.shopService.shopProducts[id].sumPrise;
     }
+
 }
