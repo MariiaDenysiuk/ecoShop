@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-// import { Shop } from '../shop.model';
 import { ShopService } from './../shop.service';
 import { CartService } from '../cart/cart.service';
 
@@ -26,7 +25,7 @@ export class  ShopListComponent implements OnInit{
         );
         let promise = new Promise((resolve, reject) =>
             {setTimeout(() => resolve(this.shopProducts = this.shopService.dataBaseProd), 2000);
-                setTimeout(() => reject(new Error("ignored")), 2000);}
+                setTimeout(() => reject(new Error("ignored")), 1000);}
         );
         promise
             .then(

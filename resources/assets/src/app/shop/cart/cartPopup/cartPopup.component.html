@@ -10,7 +10,7 @@
         <ul *ngFor="let shopProduct of shopProducts; let i = index" >
             <li>
                 <a href="product-1.html">
-                    <img class="product-media" alt="Ваш товар" src="{{shopProduct.source1Prod}}">
+                    <img class="product-media" alt="Ваш товар" src="{{shopProduct.img1}}">
                 </a>
                 <div class="item-info">
                     <div class="item-name">Ваш товар</div>
@@ -19,9 +19,9 @@
                         <span>{{shopProduct.sumProd}}</span>
                     </div>
                     <div class="item-price">
-                        {{shopProduct.priceProd}}
+                        {{shopProduct.price}}
                     </div>
-                    <i class="fa fa-times-circle-o" (click)="deleteItem(shopProduct.id, i)" aria-hidden="true"></i>
+                    <i class="fa fa-times-circle-o" (click)="deleteItem(shopProduct.idprod, i)" aria-hidden="true"></i>
                 </div>
             </li>
         </ul>

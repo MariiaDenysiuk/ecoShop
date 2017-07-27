@@ -1,23 +1,23 @@
-<main >
+<main>
     <div class="container">
         <my-breadcrumbs></my-breadcrumbs>
         <div class="row">
             <div class="col-sm-7">
                 <div class="product-gallery">
                     <div class="product-media-container"  >
-                        <img class="media" alt="Ваш товар" src="{{shopProduct.source1Prod}}" #img0>
+                        <img class="media" alt="Ваш товар" src="{{shopProduct.img1}}" #img0>
                     </div>
                     <div class="thumbnails">
-                        <img class="thumbnails-media thumbnails-media-left" [ngClass]="{'active':bool}" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.source1Prod}}" #img1>
-                        <img class="thumbnails-media thumbnails-media-right" [ngClass]="{'active':!bool}" alt="Ваш товар" (click)="toggleImg(img2, img0)" src="{{shopProduct.source2Prod}}" #img2>
+                        <img class="thumbnails-media thumbnails-media-left" [ngClass]="{'active':bool}" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.img1}}" #img1>
+                        <img class="thumbnails-media thumbnails-media-right" [ngClass]="{'active':!bool}" alt="Ваш товар" (click)="toggleImg(img2, img0)" src="{{shopProduct.img2}}" #img2>
                     </div>
-                    <p>Это описание товара. Здесь вы можете рассказать о нем подробнее. Пусть покупатели узнают, какую выгоду они получат от покупки.</p>
+                    <p>{{shopProduct.shortDescription}}</p>
                 </div>
             </div>
             <div class="col-sm-5">
             <header class="header-info">
-                <h2>{{shopProduct.nameProd}}</h2>
-                <div class="label">Артикул: 0001</div>
+                <h2>{{shopProduct.name}}</h2>
+                <div class="label">Артикул: {{shopProduct.vendorCode}}</div>
                 <div class="product-prices">${{shopProduct.price}}</div>
             </header>
             <form class="product-form" (ngSubmit)="onSubmit()" #productForm="ngForm">
@@ -37,7 +37,7 @@
             <ul class="info-sections">
                 <li class="info-section active">
                     <h3 (click)="toggle(productInfo, addSignInfo)">О ТОВАРЕ <span #addSignInfo>+</span></h3>
-                    <p  style="display: none" #productInfo>Это информация о товаре. Расскажите подробно, что он из себя представляет, и перечислите всю необходимую информацию: размеры, материалы, инструкции по уходу и т. д. Это также хорошая возможность сообщить, в чем особенность вашей продукции и какую выгоду покупатели получат в итоге. Подробные сведения о товаре помогут вашим посетителям определиться с покупкой.</p>
+                    <p  style="display: none" #productInfo>{{shopProduct.description}}</p>
                 </li>
                 <li class="info-section active">
                     <h3 (click)="toggle(returnPolicy, addSignPolicy)">ПОЛИТИКА ВОЗВРАТА  <span #addSignPolicy>+</span></h3>

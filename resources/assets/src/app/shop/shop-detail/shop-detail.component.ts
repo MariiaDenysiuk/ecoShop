@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ShopService } from '../shop.service';
 import { CartService } from '../cart/cart.service';
-import  { Shop } from '../shop.model';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 
 export class ShopDetailComponent  implements OnInit {
-    shopProduct: Shop;
+    shopProduct;
     @ViewChild('productForm') shopForm: NgForm;
     user = {
         quantity: '',

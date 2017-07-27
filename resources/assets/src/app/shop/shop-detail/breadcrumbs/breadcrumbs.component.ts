@@ -15,7 +15,7 @@ export class BreadcrumbsComponent  implements OnInit {
                  private route: ActivatedRoute,
                  private router: Router ) {}
     ngOnInit(){
-        this.totalAmount = this.shopService.shopProductsLen;
+        this.totalAmount = this.shopService.dataBaseProd.length;
         this.route.params
             .subscribe(
                 (params: Params) => {

@@ -5,19 +5,19 @@
                 <a (click)="exit()"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <div class="product-gallery">
                     <div class="product-media-container" >
-                        <img class="media" alt="Ваш товар" src="{{shopProduct.source1Prod}}" #img0>
+                        <img class="media" alt="Ваш товар" src="{{shopProduct.img1}}" #img0>
                     </div>
                     <div class="thumbnails">
-                        <img class="thumbnails-media thumbnails-media-left" [ngClass]="{'active':bool}" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.source1Prod}}" #img1>
-                        <img class="thumbnails-media" alt="Ваш товар" [ngClass]="{'active':!bool}" (click)="toggleImg(img2, img0)" src="{{shopProduct.source2Prod}}" #img2>
+                        <img class="thumbnails-media thumbnails-media-left" [ngClass]="{'active':bool}" alt="Ваш товар" (click)="toggleImg(img1, img0)" src="{{shopProduct.img1}}" #img1>
+                        <img class="thumbnails-media" alt="Ваш товар" [ngClass]="{'active':!bool}" (click)="toggleImg(img2, img0)" src="{{shopProduct.img2}}" #img2>
                     </div>
                 </div>
             </div>
             <div class="col-sm-5">
                 <header class="header-info">
-                    <h2>{{shopProduct.nameProd}}</h2>
-                    <div class="label">Артикул: 0001</div>
-                    <div class="product-prices">${{shopProduct.price}}<a [routerLink]="[shopProduct.id]">More detail</a></div>
+                    <h2>{{shopProduct.name}}</h2>
+                    <div class="label">{{shopProduct.vendorCode}}</div>
+                    <div class="product-prices">${{shopProduct.price}}<a [routerLink]="[shopProduct.idprod]">More detail</a></div>
                 </header>
                 <form class="product-form" (ngSubmit)="onSubmit()" #productForm="ngForm">
                     <div ngModelGroup="userData">

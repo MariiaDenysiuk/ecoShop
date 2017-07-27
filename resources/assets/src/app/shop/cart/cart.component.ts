@@ -18,23 +18,22 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {
         this.shopProducts = this.cartService.addedProd;
-        console.log(this.shopProducts);
     }
 
     add(id) {
         this.cartService.addShopProduct(id, 1);
         this.allItem += 1;
-        this.sum += this.shopService.shopProducts[id].priceProd;
+        this.sum += this.shopService.dataBaseProd[id].price;
         this.cartService.cartHeaderPlus.next(1);
     }
 
     reduce(id) {
         if(this.allItem === 0){
-            this.shopService.shopProducts[id].sumProd = 0
+            this.shopService.dataBaseProd[id].sumProd = 0
         } else {
             this.cartService.addShopProduct(id, -1);
             this.allItem -= 1;
-            this.sum -= this.shopService.shopProducts[id].priceProd;
+            this.sum -= this.shopService.dataBaseProd[id].price;
             this.cartService.cartHeaderMinus.next(-1);
         }
 
@@ -43,8 +42,8 @@ export class CartComponent implements OnInit {
     deleteItem(id, i) {
         this.cartService.deleteShopProduct(id);
         this.shopProducts.splice(i, 1);
-        this.allItem = this.allItem - this.shopService.shopProducts[id].sumProd;
-        this.sum = this.sum - this.shopService.shopProducts[id].sumPrise;
+        this.allItem = this.allItem - this.shopService.dataBaseProd[id].sumProd;
+        this.sum = this.sum - this.shopService.dataBaseProd[id].sumPrise;
         this.cartService.cartHeaderDelete.next(this.allItem);
     }
 

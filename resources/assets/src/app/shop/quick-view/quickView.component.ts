@@ -1,6 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { CartService } from '../cart/cart.service';
-import { Shop } from '../shop.model';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,7 +8,7 @@ import { NgForm } from '@angular/forms';
     styleUrls: ['quickView.container.scss'],
 })
 export class QuickViewComponent {
-    @Input() shopProduct: Shop;
+    @Input() shopProduct;
     @ViewChild('productForm') shopForm: NgForm;
     constructor( private cartService: CartService) {}
     user = {
@@ -22,7 +21,7 @@ export class QuickViewComponent {
         this.user.quantity = this.shopForm.value.userData.quantity;
         this.cartService.showCartPopup.next(this.submitted);
         this.cartService.cartHeader.next(Number(this.user.quantity));
-        this.cartService.addShopProduct(this.shopProduct.id, this.user.quantity);
+        this.cartService.addShopProduct(this.shopProduct.idprod-1, this.user.quantity);
         this.cartService.hidePopup.next(this.hidePopup);
     }
     exit() {

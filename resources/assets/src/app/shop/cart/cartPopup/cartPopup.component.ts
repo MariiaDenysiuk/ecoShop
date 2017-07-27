@@ -17,8 +17,7 @@ export class CartPopupComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private cartService: CartService,
                 private shopService: ShopService) {
-        this.allItem = this.cartService.allItems;
-        this.sum = this.cartService.priceAmount;
+
     }
     ngOnInit() {
         this.route.params
@@ -29,6 +28,8 @@ export class CartPopupComponent implements OnInit {
             );
 
         this.shopProducts = this.cartService.addedProd;
+        this.allItem = this.cartService.allItems;
+        this.sum = this.cartService.priceAmount;
     }
     hidePopup(){
       this.cartService.hideEl.next(this.submitted);
@@ -36,8 +37,8 @@ export class CartPopupComponent implements OnInit {
     deleteItem(id, i) {
         this.cartService.deleteShopProduct(id);
         this.shopProducts.splice(i, 1);
-        this.allItem = this.allItem - this.shopService.shopProducts[id].sumProd;
-        this.sum = this.sum - this.shopService.shopProducts[id].sumPrise;
+        this.allItem = this.allItem - this.shopService.dataBaseProd[id].sumProd;
+        this.sum = this.sum - this.shopService.dataBaseProd[id].sumPrise;
         this.cartService.cartHeaderDelete.next(this.allItem);
     }
 }

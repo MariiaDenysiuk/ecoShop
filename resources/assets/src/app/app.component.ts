@@ -4,9 +4,10 @@ import { showStateTrigger } from './shop/shop-detail/animations';
 import '../style/app.scss';
 
 @Component({
-  selector: 'my-app', // <my-app></my-app>
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  animations: [
+    styleUrls: ['./app.component.scss'],
+    animations: [
         showStateTrigger
     ]
 })
@@ -20,9 +21,9 @@ export class AppComponent implements OnInit {
         }
     );
     this.cartService.hideEl.subscribe(
-         (hideEl) => {
-           this.submitted = hideEl;
-         }
-      );
+        (hideEl) => {
+          this.submitted = hideEl;
+        }
+    );
   }
 }
