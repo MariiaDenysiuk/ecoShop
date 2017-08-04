@@ -1,8 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 
-export class FormService {
+export class RegistrationService {
     showUser = new Subject<boolean>();
     userName = new Subject();
-    
-    
+
 }

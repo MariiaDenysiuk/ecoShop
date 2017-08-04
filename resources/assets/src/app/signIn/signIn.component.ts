@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ApiService } from '../api.service';
-import { FormService } from '../form.service';
 import { Router } from '@angular/router';
+import {RegistrationService} from "../registration.service";
 
 @Component({
     selector: 'my-signin',
@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
     userName;
     constructor(private apiService: ApiService,
                 private router: Router,
-                private formService: FormService) {}
+                private regService: RegistrationService) {}
     ngOnInit() {
         this.createFormControls();
         this.createForm();
@@ -52,14 +52,16 @@ export class SignInComponent implements OnInit {
     onSubmit() {
         if (this.myform.valid) {
             this.userName = this.firstName.value;
+
         this.apiService.addShop(this.firstName.value, this.lastName.value, this.email.value, this.password.value)
             .subscribe(
                 ()=> {
                     this.customer = true;
                     if (this.customer ) {
                         alert("thanks for registration");
-                        this.formService.showUser.next(this.customer);
-                        this.formService.userName.next(this.userName);
+                        this.regService.showUser.next(this.customer);
+                        this.regService.userName.next(this.userName);
+                        localStorage.setItem("yourName", this.userName);
                         this.router.navigate(['/']);
                     }
 

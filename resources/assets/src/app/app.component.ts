@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from './shop/cart/cart.service';
 import { showStateTrigger } from './shop/shop-detail/animations';
 import '../style/app.scss';
+import {SubService} from "./cart.service";
 
 @Component({
   selector: 'my-app',
@@ -13,14 +13,14 @@ import '../style/app.scss';
 })
 export class AppComponent implements OnInit {
   submitted : boolean = false;
-  constructor( private cartService: CartService) {}
+  constructor( private subService: SubService) {}
   ngOnInit() {
-    this.cartService.showCartPopup.subscribe(
+    this.subService.showCartPopup.subscribe(
         (showCart) => {
           this.submitted = showCart;
         }
     );
-    this.cartService.hideEl.subscribe(
+    this.subService.hideEl.subscribe(
         (hideEl) => {
           this.submitted = hideEl;
         }

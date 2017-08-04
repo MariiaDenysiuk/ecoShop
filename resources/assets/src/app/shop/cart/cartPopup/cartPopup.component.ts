@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CartService } from '../cart.service';
-import { ShopService } from '../../shop.service';
+import {SubService} from "../../../cart.service";
 
 @Component({
     selector: 'my-cart-popup',
@@ -15,9 +14,15 @@ export class CartPopupComponent implements OnInit {
     sum;
     submitted : boolean = false;
     constructor(private route: ActivatedRoute,
-                private cartService: CartService,
-                private shopService: ShopService) {
-
+                private subService: SubService) {
+        this.allItem  = this.subService.getItems;
+        this.sum = this.subService.getGeneralPrice;
+        this.subService.header.subscribe(
+            (item)=>{this.allItem = item}
+        );
+        this.subService.sum.subscribe(
+            (item)=>{this.sum = item}
+        );
     }
     ngOnInit() {
         this.route.params
@@ -27,18 +32,15 @@ export class CartPopupComponent implements OnInit {
                 }
             );
 
-        this.shopProducts = this.cartService.addedProd;
-        this.allItem = this.cartService.allItems;
-        this.sum = this.cartService.priceAmount;
+        this.shopProducts = this.subService.cartObjToArray();
+        this.allItem = this.subService.getItems;
+        this.sum = this.subService.getGeneralPrice;
     }
     hidePopup(){
-      this.cartService.hideEl.next(this.submitted);
+      this.subService.hideEl.next(this.submitted);
     }
     deleteItem(id, i) {
-        this.cartService.deleteShopProduct(id);
         this.shopProducts.splice(i, 1);
-        this.allItem = this.allItem - this.shopService.dataBaseProd[id].sumProd;
-        this.sum = this.sum - this.shopService.dataBaseProd[id].sumPrise;
-        this.cartService.cartHeaderDelete.next(this.allItem);
+        this.subService.deleteFromCard(id);
     }
 }

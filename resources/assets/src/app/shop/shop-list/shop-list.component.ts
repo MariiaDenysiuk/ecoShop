@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ShopService } from './../shop.service';
-import { CartService } from '../cart/cart.service';
+import {SubService} from "../../cart.service";
 
 
 @Component({
@@ -13,12 +13,11 @@ export class  ShopListComponent implements OnInit{
     show = false;
     shopProductPopup;
     constructor(private shopService: ShopService,
-                private cartService: CartService,
-                ) {}
+                private subService: SubService) {}
 
     ngOnInit() {
         this.shopProducts = this.shopService.getShopProducts();
-        this.cartService.hidePopup.subscribe(
+        this.subService.hidePopup.subscribe(
             (hidePopup) => {
                 this.show = hidePopup;
             }

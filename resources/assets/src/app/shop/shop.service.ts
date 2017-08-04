@@ -2,9 +2,11 @@
 import { ApiService } from "../api.service"
 import {Injectable} from "@angular/core";
 
+
 @Injectable()
 export class ShopService {
     dataBaseProd;
+    go = 1;
     constructor(private apiService: ApiService){
         this.apiService.getShop().subscribe(
             (info) => {info.map(function (obj) {
@@ -14,7 +16,6 @@ export class ShopService {
             });
             this.dataBaseProd = info;
             });
-
     }
 
     getShopProducts() {

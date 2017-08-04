@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../shop/cart/cart.service';
-import { FormService } from '../form.service';
 import { ApiService } from '../api.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import {SubService} from "../cart.service";
+import {RegistrationService} from "../registration.service";
 
 @Component({
     selector: 'my-header',
     templateUrl: 'header.component.html',
     styleUrls: ['./header.component.scss'],
-    // encapsulation: ViewEncapsulation.Native
 })
 export class HeaderComponent implements OnInit {
     title = 'app works!';
-    allItem:number = 0;
+    allItem;
     user;
     userName ;
     show;
@@ -21,29 +20,24 @@ export class HeaderComponent implements OnInit {
     login: FormControl;
     password: FormControl;
 
-    constructor(private cartService: CartService,
-                private formService: FormService,
-                private apiService: ApiService) {}
+    constructor(
+                private regService: RegistrationService,
+                private apiService: ApiService,
+                private sub: SubService) {
+        this.allItem = this.sub.getItems;
+
+        this.sub.header.subscribe(
+            (h)=>{ this.allItem = h;}
+        );
+    }
     ngOnInit() {
         this.createFormControls();
         this.createForm();
-        this.allItem = this.cartService.allItems;
-        this.cartService.cartHeader.subscribe(
-            (index: number) => { this.allItem += index; }
-        );
-        this.cartService.cartHeaderMinus.subscribe(
-            (index: number) => { this.allItem += index; }
-        );
-        this.cartService.cartHeaderPlus.subscribe(
-            (index: number) => { this.allItem += index; }
-        );
-        this.cartService.cartHeaderDelete.subscribe(
-            (index: number) => { this.allItem = index; }
-        );
-        this.formService.showUser.subscribe(
+
+        this.regService.showUser.subscribe(
             (visibleUser) => { this.user = visibleUser;  }
         );
-        this.formService.userName.subscribe(
+        this.regService.userName.subscribe(
             (name) => {
                 this.userName = name;
             }

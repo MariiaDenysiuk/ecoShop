@@ -25,7 +25,7 @@
                 <h3>{{shopProduct.name}}</h3>
                 <p>{{shopProduct.vendorCode}}</p>
                 <p>{{shopProduct.price}}</p>
-                <p class="delete"><a (click)="deleteItem(shopProduct.idprod, i)">Delete this product</a></p>
+                <p class="delete"><a (click)="deleteItem(shopProduct.idprod-1, i)">Delete this product</a></p>
             </div>
             <div class="col-sm-3 a-m-products"><a class="add-product" (click)="add(shopProduct.idprod-1)">+</a><span class="input-sum">{{shopProduct.sumProd}}</span> <a class="add-product" (click)="reduce(shopProduct.idprod-1)">-</a></div>
             <div class="col-sm-2 sum sum-number">{{shopProduct.sumPrise}}</div>

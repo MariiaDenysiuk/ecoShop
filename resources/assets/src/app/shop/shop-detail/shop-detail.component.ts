@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ShopService } from '../shop.service';
-import { CartService } from '../cart/cart.service';
 import { NgForm } from '@angular/forms';
+import {SubService} from "../../cart.service";
 
 @Component({
     selector: 'my-shop-detail',
@@ -22,7 +22,7 @@ export class ShopDetailComponent  implements OnInit {
 
     constructor( private route: ActivatedRoute,
                  private  shopService: ShopService,
-                 private cartService: CartService) {}
+                 private sub: SubService) {}
     
     ngOnInit() {
         this.route.params
@@ -36,9 +36,8 @@ export class ShopDetailComponent  implements OnInit {
 
     onSubmit() {
         this.user.quantity = this.shopForm.value.userData.quantity;
-        this.cartService.cartHeader.next(+(this.user.quantity));
-        this.cartService.addShopProduct(this.id, this.user.quantity);
-        this.cartService.showCartPopup.next(this.submitted);
+        this.sub.addToCart(this.id, this.user.quantity);
+        this.sub.showCartPopup.next(this.submitted);
     }
     
     toggle(el, insert){

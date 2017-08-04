@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { CartService } from '../cart/cart.service';
 import { NgForm } from '@angular/forms';
+import {SubService} from "../../cart.service";
 
 @Component({
     selector: 'my-quick-view',
@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
 export class QuickViewComponent {
     @Input() shopProduct;
     @ViewChild('productForm') shopForm: NgForm;
-    constructor( private cartService: CartService) {}
+    constructor(
+                 private sub: SubService) {}
     user = {
         quantity: '',
     };
@@ -19,13 +20,12 @@ export class QuickViewComponent {
     bool: boolean = true;
     onSubmit() {
         this.user.quantity = this.shopForm.value.userData.quantity;
-        this.cartService.showCartPopup.next(this.submitted);
-        this.cartService.cartHeader.next(Number(this.user.quantity));
-        this.cartService.addShopProduct(this.shopProduct.idprod-1, this.user.quantity);
-        this.cartService.hidePopup.next(this.hidePopup);
+        this.sub.showCartPopup.next(this.submitted);
+        this.sub.addToCart(this.shopProduct.idprod-1, this.user.quantity);
+        this.sub.hidePopup.next(this.hidePopup);
     }
     exit() {
-        this.cartService.hidePopup.next(this.hidePopup);
+        this.sub.hidePopup.next(this.hidePopup);
     }
     toggleImg(img, img0){
         img0.setAttribute('src', img.getAttribute('src'));
