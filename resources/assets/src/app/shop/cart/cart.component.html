@@ -8,7 +8,7 @@
                 </h1>
             </div>
             <div class="col-sm-3">
-                <button >ОФОРМИТЬ&nbsp;ЗАКАЗ</button>
+                <button (click)="order()">ОФОРМИТЬ&nbsp;ЗАКАЗ</button>
             </div>
         </div>
         <div class="row">
@@ -33,3 +33,15 @@
         <div class="amount">Сумма: ${{sum}}</div>
     </div>
 </main>
+<div  [@showPopupTrigger]="popup ? 'shown':'hidden'" *ngIf="popup" >
+    <div class="cart-popup">
+        <p>Авторизуйтесь и зарегистрируйтесь!</p>
+        <button (click)="hidePopup()">Ok</button>
+    </div>
+</div>
+<div  [@showPopupTrigger]="orderPopup ? 'shown':'hidden'" *ngIf="orderPopup" >
+    <div class="cart-popup">
+        <p>Ваш заказ принят!</p>
+        <button (click)="hidePopup()">Ok</button>
+    </div>
+</div>

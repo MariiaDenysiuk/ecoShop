@@ -8,6 +8,16 @@
   z-index: 100;
 }
 
+.show-cabinet{
+  width: 20%;
+  position: absolute;
+  right: 60px;
+  top: 120px;
+  padding: 20px;
+  background-color: #F0E11A;
+  z-index: 100;
+}
+
 .show-form label {
   color: white;
 }
@@ -32,4 +42,21 @@ a {
 
 .selected {
   color: #A2CC01;
+}
+
+.sign-in-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+.personal-page {
+  z-index: 100;
+}
+
+.show-form a {
+  cursor: pointer;
 }

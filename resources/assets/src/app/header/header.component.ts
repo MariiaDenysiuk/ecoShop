@@ -3,6 +3,8 @@ import { ApiService } from '../api.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {SubService} from "../cart.service";
 import {RegistrationService} from "../registration.service";
+import {Router} from "@angular/router";
+import {Response} from "@angular/http";
 
 @Component({
     selector: 'my-header',
@@ -12,18 +14,21 @@ import {RegistrationService} from "../registration.service";
 export class HeaderComponent implements OnInit {
     title = 'app works!';
     allItem;
-    user;
+    user=true;
     userName ;
     show;
+    cabinet;
+    error;
 
     myform: FormGroup;
     login: FormControl;
     password: FormControl;
 
-    constructor(
-                private regService: RegistrationService,
+    constructor(private regService: RegistrationService,
                 private apiService: ApiService,
-                private sub: SubService) {
+                private sub: SubService,
+                private router: Router,
+                private registration: RegistrationService) {
         this.allItem = this.sub.getItems;
 
         this.sub.header.subscribe(
@@ -45,11 +50,13 @@ export class HeaderComponent implements OnInit {
     }
 
     createFormControls() {
-        this.login = new FormControl('', Validators.required);
+        this.login = new FormControl('', [
+            Validators.required,
+            Validators.pattern('[^ @]*@[^ @]*')
+        ]);
 
         this.password = new FormControl('', [
             Validators.required,
-            Validators.minLength(8)
         ]);
     }
 
@@ -62,19 +69,38 @@ export class HeaderComponent implements OnInit {
     showSignInForm(){
         this.show = true;
     }
+
     hideSignInForm(){
-            setTimeout(() => {
-                this.show = false;
-            }, 3000);
+       this.show = false;
+       this.cabinet = false;
+    }
+
+    signin(){
+        this.router.navigate(['signin']);
+        this.hideSignInForm();
     }
 
     onSubmit(){
         this.apiService.findUser(this.login.value, this.password.value)
             .subscribe(
-                (user) => {
+                (user: Response) => {
                     this.user = true;
                     this.userName = user['first_name'];
+                    this.registration.userName.next(this.userName);
+                    this.show = false;
+                    this.error = false;
+                    this.myform.reset();
+                },
+                error => {
+                    console.log(error);
+                    this.show = true;
+                    this.error = true;
                 }
             );
+    }
+
+    userCab(){
+       this.cabinet = true;
+       this.show = false;
     }
 }

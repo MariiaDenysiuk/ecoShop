@@ -1,18 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 import {SubService} from "../../cart.service";
+import { showPopupTrigger } from './popup.animation';
+import {RegistrationService} from "../../registration.service";
 
 @Component({
     selector: 'my-cart',
-    templateUrl: './cart.component.html'
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    animations: [
+        showPopupTrigger
+    ]
 })
 export class CartComponent implements OnInit {
     shopProducts;
     allItem;
     sum;
+    popup;
+    orderPopup;
+    userName;
 
     constructor(private shopService: ShopService,
-                private sub: SubService
+                private sub: SubService,
+                private registration: RegistrationService
                ) {
         this.allItem  = this.sub.getItems;
         this.sum = this.sub.getGeneralPrice;
@@ -26,6 +36,11 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {
         this.shopProducts = this.sub.cartObjToArray();
+        this.registration.userName.subscribe(
+            (name) => {
+                this.userName = name;
+            }
+        );
     }
 
     add(id) {
@@ -48,6 +63,19 @@ export class CartComponent implements OnInit {
     deleteItem(id, i) {
         this.shopProducts.splice(i, 1);
         this.sub.deleteFromCard(id);
+    }
+
+    order(){
+        if(!this.userName){
+            this.popup = true;
+        } else {
+            this.orderPopup = true;
+        }
+    }
+
+    hidePopup(){
+        this.popup = false;
+        this.orderPopup = false;
     }
 
 }

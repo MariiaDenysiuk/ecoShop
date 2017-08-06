@@ -1,0 +1,30 @@
+.cart-popup {
+  background-color: white;
+  width: 30%;
+  padding: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -160px;
+  height: 120px;
+}
+
+.cart-popup button {
+  display: block;
+  width: 20%;
+  padding: 0.4em 1.2em;
+  text-align: center;
+  line-height: 1.2;
+  transition: background 0.3s ease-in-out;
+  color: #fff;
+  border: 0 solid #F0E11A;
+  outline: none;
+  background: #F0E11A;
+  margin: 5px auto;
+  cursor: pointer;
+}
+
+.cart-popup p{
+  text-align: center;
+}

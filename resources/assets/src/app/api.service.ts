@@ -16,9 +16,10 @@ export class ApiService {
     getShop(): Observable<any>{
         return this.http.get('http://laravel.loc/api/products')
             .map(
-                (response: Response) => {
-                    return response.json().product;
+                (res: Response) => {
+                       return  res.json().product;
                 }
+
             );
     }
 
